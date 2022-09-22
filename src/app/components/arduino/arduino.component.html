@@ -1,0 +1,29 @@
+<title>
+    <h1>Está é a Área de Controle do Sistema</h1>
+</title>
+<mat-card class="card title-card" style="background-image: linear-gradient(#C2F8CB,#B3E9C7 );">
+    <h1>Bem vindo ao controlador do SMART GARDEN</h1>
+    <h2>Aqui vode poderá acessar informações e controlar seu mini jardim </h2>
+</mat-card>
+
+<mat-card>
+    <mat-list style="background-color: grey">
+        <mat-list-item> <button mat-flat-button style="background-color: #F0FFF1;">Ligar luz</button> </mat-list-item>
+        <mat-list-item> <button mat-flat-button style="background-color: #F0FFF1;">Ativar Bomba</button>
+        </mat-list-item>
+    </mat-list>
+
+    <table matSort>
+        <tr>
+            <th mat-sort-header="Umidade">Umidade</th>
+            <th mat-sort-header="Luminosidade">Luminosidade</th>
+            <th mat-sort-header="Temperatura">Temperatura</th>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>15</td>
+            <td>20</td>
+        </tr>
+    </table>
+
+</mat-card>

@@ -1,0 +1,47 @@
+<title>
+    <h1>Esta é a área de Monitoramento de Status de Rede?</h1>
+</title>
+<content class="content">
+    <mat-card class="card tab-title">
+        <h1>Esta é a área de monitoramento de rede.</h1>
+        <h2>Aqui você pode verificar o status da conexão de rede com o Arduino e fazer as devidas melhorias.</h2>
+    </mat-card>
+    <mat-card class="card">
+        <div style="width: 100%">
+            <div class="card-title">Velocidade média atual</div>
+        </div>
+        <div class="card-content">
+            <mat-progress-spinner [value]="60"></mat-progress-spinner>
+        </div>
+    </mat-card>
+    <mat-card class="card">
+        <div style="width: 100%">
+            <div class="card-title">Limite de memória</div>
+        </div>
+        <div class="card-content">
+            <mat-progress-bar [value]="80" mode="determinate"></mat-progress-bar>
+        </div>
+    </mat-card>
+    <mat-card class="card">
+        <div style="width: 100%">
+            <div class="card-title">Pontos ativos</div>
+        </div>
+        <div class="card-content">
+            <mat-checkbox>Bomba</mat-checkbox>
+            <mat-checkbox>Sensor de umidade</mat-checkbox>
+            <mat-checkbox>Sensor de temperatura</mat-checkbox>
+            <mat-checkbox>Sensor de luminosidade</mat-checkbox>
+        </div>
+    </mat-card>
+    <mat-card class="card">
+        <div style="width: 100%">
+            <div class="card-title">Redes ativas</div>
+        </div>
+        <div class="card-content">
+            <mat-slide-toggle>Rede 1</mat-slide-toggle>
+            <mat-slide-toggle>Rede 2</mat-slide-toggle>
+            <mat-slide-toggle>Rede 3</mat-slide-toggle>
+            <mat-slide-toggle>Rede 4</mat-slide-toggle>
+        </div>
+    </mat-card>
+</content>
