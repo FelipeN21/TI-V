@@ -1,47 +1,67 @@
-<title>
-    <h1>Esta é a área de Monitoramento de Status de Rede?</h1>
-</title>
 <content class="content">
-    <mat-card class="card tab-title">
-        <h1>Esta é a área de monitoramento de rede.</h1>
-        <h2>Aqui você pode verificar o status da conexão de rede com o Arduino e fazer as devidas melhorias.</h2>
+    <!-- Título -->
+    <mat-card class="card tab-title" style="width: auto">
+        <h1>Esta é a área de monitoramento do Sitema</h1>
+        <h2>Aqui você pode verificar o status do Sitema com o Arduino</h2>
     </mat-card>
-    <mat-card class="card">
-        <div style="width: 100%">
-            <div class="card-title">Velocidade média atual</div>
-        </div>
-        <div class="card-content">
-            <mat-progress-spinner [value]="60"></mat-progress-spinner>
-        </div>
-    </mat-card>
-    <mat-card class="card">
-        <div style="width: 100%">
-            <div class="card-title">Limite de memória</div>
-        </div>
-        <div class="card-content">
-            <mat-progress-bar [value]="80" mode="determinate"></mat-progress-bar>
-        </div>
-    </mat-card>
-    <mat-card class="card">
-        <div style="width: 100%">
-            <div class="card-title">Pontos ativos</div>
-        </div>
-        <div class="card-content">
-            <mat-checkbox>Bomba</mat-checkbox>
-            <mat-checkbox>Sensor de umidade</mat-checkbox>
-            <mat-checkbox>Sensor de temperatura</mat-checkbox>
-            <mat-checkbox>Sensor de luminosidade</mat-checkbox>
-        </div>
-    </mat-card>
-    <mat-card class="card">
-        <div style="width: 100%">
-            <div class="card-title">Redes ativas</div>
-        </div>
-        <div class="card-content">
-            <mat-slide-toggle>Rede 1</mat-slide-toggle>
-            <mat-slide-toggle>Rede 2</mat-slide-toggle>
-            <mat-slide-toggle>Rede 3</mat-slide-toggle>
-            <mat-slide-toggle>Rede 4</mat-slide-toggle>
-        </div>
-    </mat-card>
+    <!-- Conteúdo Mínimo -->
+    <div class="content-div">
+        <!-- Card de Temperatura -->
+        <mat-card class="card">
+            <div style="width: 100%">
+                <div class="card-title">Temperatura atual</div>
+            </div>
+            <div class="card-content">
+                <app-temp-graph></app-temp-graph>
+            </div>
+            <button mat-raised-button (click)="toggleHistTemp()" class="history-button"><span>{{histTemp ? 'Fechar' :
+                    'Ver'}}
+                    histórico</span>
+                <mat-icon>{{histTemp ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
+                </mat-icon>
+            </button>
+        </mat-card>
+        <!-- Card de Luz -->
+        <mat-card class="card">
+            <div style="width: 100%">
+                <div class="card-title">Quantidade de luz atual</div>
+            </div>
+            <div class="card-content">
+                <app-light-graph></app-light-graph>
+            </div>
+            <button mat-raised-button (click)="toggleHistLight()" class="history-button"><span>{{histLight ? 'Fechar' :
+                    'Ver'}} histórico</span>
+                <mat-icon>{{histLight ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
+                </mat-icon>
+            </button>
+        </mat-card>
+    </div>
+    <!-- Conteúdo com Histórico -->
+    <div class="content-div">
+        <!-- Histórico de Temperatura -->
+        <mat-card class="card" *ngIf="histTemp">
+            <div style="width: 100%">
+                <div class="card-title">Pontos ativos</div>
+            </div>
+            <div class="card-content">
+                <mat-checkbox>Bomba</mat-checkbox>
+                <mat-checkbox>Sensor de umidade</mat-checkbox>
+                <mat-checkbox>Sensor de temperatura</mat-checkbox>
+                <mat-checkbox>Sensor de luminosidade</mat-checkbox>
+            </div>
+        </mat-card>
+        <!-- Histórico de Luz -->
+        <mat-card class="card" *ngIf="histLight">
+            <div style="width: 100%">
+                <div class="card-title">Redes ativas</div>
+            </div>
+            <div class="card-content">
+                <mat-slide-toggle>Rede 1</mat-slide-toggle>
+                <mat-slide-toggle>Rede 2</mat-slide-toggle>
+                <mat-slide-toggle>Rede 3</mat-slide-toggle>
+                <mat-slide-toggle>Rede 4</mat-slide-toggle>
+            </div>
+        </mat-card>
+    </div>
+
 </content>
