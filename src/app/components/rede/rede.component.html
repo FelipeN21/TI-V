@@ -9,7 +9,7 @@
         <!-- Card de Temperatura -->
         <mat-card class="card">
             <div style="width: 100%">
-                <div class="card-title">Temperatura atual</div>
+                <div class="card-title">Histórico </div>
             </div>
             <div class="card-content">
                 <app-temp-graph></app-temp-graph>
@@ -27,7 +27,7 @@
                 <div class="card-title">Quantidade de luz atual</div>
             </div>
             <div class="card-content">
-                <app-light-graph></app-light-graph>
+                <app-light-graph [mergeOptions]="gaugeMergeOptions" [options]="gaugeOptions"></app-light-graph>
             </div>
             <button mat-raised-button (click)="toggleHistLight()" class="history-button"><span>{{histLight ? 'Fechar' :
                     'Ver'}} histórico</span>
@@ -44,22 +44,18 @@
                 <div class="card-title">Pontos ativos</div>
             </div>
             <div class="card-content">
-                <mat-checkbox>Bomba</mat-checkbox>
-                <mat-checkbox>Sensor de umidade</mat-checkbox>
-                <mat-checkbox>Sensor de temperatura</mat-checkbox>
-                <mat-checkbox>Sensor de luminosidade</mat-checkbox>
+                <app-light-history-graph [mergeOptions]="gaugeMergeOptions" [options]="gaugeOptions">
+                </app-light-history-graph>
             </div>
         </mat-card>
         <!-- Histórico de Luz -->
         <mat-card class="card" *ngIf="histLight">
             <div style="width: 100%">
-                <div class="card-title">Redes ativas</div>
+                <div class="card-title">Histórico de Luminosidade</div>
             </div>
             <div class="card-content">
-                <mat-slide-toggle>Rede 1</mat-slide-toggle>
-                <mat-slide-toggle>Rede 2</mat-slide-toggle>
-                <mat-slide-toggle>Rede 3</mat-slide-toggle>
-                <mat-slide-toggle>Rede 4</mat-slide-toggle>
+                <app-light-history-graph [mergeOptions]="lineMergeOptions" [options]="lineOptions">
+                </app-light-history-graph>
             </div>
         </mat-card>
     </div>

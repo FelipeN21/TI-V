@@ -36,7 +36,7 @@ export class TempGraphComponent implements OnInit {
     },
     series: [
       {
-        data: [820, 932, 901, 934, 1290, 1430, 1550, 1200, 1650.145, 1400],
+        data: [20, 55, 30, 40, 45, 55, 60, 65, 44, 22],
         type: 'line',
         areaStyle: {},
       },

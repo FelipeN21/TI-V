@@ -28,26 +28,13 @@
   margin: 4px 2px;
   border-radius: 50%;
   height: 100px;
-  width: 100px;
+  width: 120px;
 }
 
-.flex {
-  display: flex;
+td {
+  font-size: 15px;
 }
 
-.flex-item-1 {
-  flex: 1;
-}
-
-/* Flex Item */
-.item {
-  margin: 5px;
-  font-size: 1.5em;
-}
-
-.container {
-  max-width: 370px;
-  min-width: 300px;
-
-  vertical-align: top;
+tr {
+  font-size: 15px;
 }

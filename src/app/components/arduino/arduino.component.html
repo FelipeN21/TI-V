@@ -17,53 +17,33 @@
 </mat-card>
 <div class="">
     <!--Seção da Tabela -->
-    <div>
-        <section class="row">
-            <div>
-                <table class="col-md-4">
-                    <tr>
-                        <div>
-                            <th style="font-size: 30px">Umidade</th>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div>
-                            <td style="font-size: 30px">10</td>
-                        </div>
-                    </tr>
-                </table>
+    <mat-card class="card">
+        <mat-card>
+            <table>
+                <tr>
 
-                <table class="col-md-4">
-                    <div>
-                        <th style="font-size: 30px">Luminosidade</th>
-                    </div>
-                    <tr>
-                        <div>
-                            <td style="font-size: 30px">10</td>
-                        </div>
-                    </tr>
-                </table>
+                    <th style="margin-left: -10%">Umidade</th>
+                    <th>Temperatura</th>
+                    <th style="margin-left: 10%">Luminosidade</th>
 
-                <table class="col-md-4">
-                    <div>
-                        <th style="font-size: 30px">Temperatura</th>
-                    </div>
-                    <tr>
-                        <div>
-                            <td style="font-size: 30px">20</td>
-                        </div>
-                    </tr>
-                </table>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>15</td>
+                    <td>20</td>
+                </tr>
 
-            </div>
-        </section>
-    </div>
+            </table>
+        </mat-card>
+    </mat-card>
+
     <!--Seção dos Botões -->
 
     <mat-card class="card">
         <mat-card style="display: flex;">
             <div style="text-align: right;">
-                <button *ngIf="!CorLuz" class="button-round" style="background-color: red; " (click)="AtivarLuz()">Ligar
+                <button *ngIf="!CorLuz" class="button-round" style="background-color: red; "
+                    (click)="AtivarLuz()">Desligar
                     luz</button>
                 <button *ngIf="CorLuz" class="button-round" style="background-color: green; "
                     (click)="AtivarLuz()">Ligar
@@ -74,7 +54,7 @@
                     (click)="AtivarBomba()">Ativar
                     Bomba</button>
                 <button *ngIf="CorBomba" class="button-round" style="background-color: green;"
-                    (click)="AtivarBomba()">Ativar
+                    (click)="AtivarBomba()">Desativar
                     Bomba</button>
             </div>
         </mat-card>
