@@ -8,12 +8,46 @@
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  font-size: 14px;
-  font-weight: 400;
+  width: 100%;
 }
 
 .title-card {
   grid-column: span 2 / 3;
+}
+
+.button-round {
+  border: none;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-item-1 {
+  flex: 1;
+}
+
+/* Flex Item */
+.item {
+  margin: 5px;
+  font-size: 1.5em;
+}
+
+.container {
+  max-width: 370px;
+  min-width: 300px;
+
+  vertical-align: top;
 }
