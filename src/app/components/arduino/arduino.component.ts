@@ -6,18 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./arduino.component.css'],
 })
 export class ArduinoComponent implements OnInit {
+  lightOn = true;
+  bombOn = false;
+
   constructor() {}
-  CorLuz = true;
-  CorBomba = true;
 
   ngOnInit(): void {}
 
-  public AtivarLuz() {
-    if (this.CorLuz == true) this.CorLuz = false;
-    else this.CorLuz = true;
+  toggleLight() {
+    this.lightOn = !this.lightOn;
   }
-  public AtivarBomba() {
-    if (this.CorBomba == true) this.CorBomba = false;
-    else this.CorBomba = true;
+  toggleBomb() {
+    this.bombOn = !this.bombOn;
   }
 }
