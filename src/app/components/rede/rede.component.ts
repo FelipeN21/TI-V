@@ -8,18 +8,32 @@ import { EChartsOption } from 'echarts';
   styleUrls: ['./rede.component.css'],
 })
 export class RedeComponent implements OnInit {
-  histTemp: boolean = false;
-  histLight: boolean = false;
-  graphValue: number = 82;
-  gaugeMergeOptions = {};
-  lineMergeOptions = {};
   interval = setInterval(() => {
-    this.firulinha(this.graphValue);
+    this.firulinha(this.lightGraphValue);
   }, 500);
-  linesData: number[] = [0];
-  linesValue: number[] = [];
-  gaugeOptions: EChartsOption = this.chartGaugeOption(this.graphValue);
-  lineOptions: EChartsOption = this.chartGaugeOption(this.graphValue);
+
+  // Variáveis de luminosidade
+  histLight: boolean = false;
+  lightGraphValue: number = 82;
+  lightGaugeMergeOptions = {};
+  lightLineMergeOptions = {};
+  lightLinesData: number[] = [0];
+  lightLinesValue: number[] = [];
+  lightGaugeOptions: EChartsOption = this.chartGaugeOption(
+    this.lightGraphValue
+  );
+  lightLineOptions: EChartsOption = this.chartLineOption(this.lightGraphValue);
+
+  // Variáveis de temperatura
+  // TODO: Adaptar variaveis de temperatura
+  histTemp: boolean = false;
+  tempGraphValue: number = 20;
+  tempGaugeMergeOptions = {};
+  tempLineMergeOptions = {};
+  tempLinesData: number[] = [0];
+  tempLinesValue: number[] = [];
+  tempGaugeOptions: EChartsOption = this.chartGaugeOption(this.tempGraphValue);
+  tempLineOptions: EChartsOption = this.chartLineOption(this.tempGraphValue);
 
   constructor() {}
 
@@ -34,16 +48,29 @@ export class RedeComponent implements OnInit {
   }
 
   firulinha(baseValue: number) {
+    // Firulinha para luminosidade
     let adaptedValue = Math.floor(Math.random() * 3);
     if (Math.floor(Math.random() * 2) == 0) {
       adaptedValue *= -1;
     }
-    this.graphValue = baseValue + adaptedValue;
-    if (this.graphValue < 0) {
-      this.graphValue = 0;
+    this.lightGraphValue = baseValue + adaptedValue;
+    if (this.lightGraphValue < 0) {
+      this.lightGraphValue = 0;
     }
-    this.gaugeMergeOptions = this.chartGaugeOption(this.graphValue);
-    this.lineMergeOptions = this.chartLineOption(this.graphValue);
+    this.lightGaugeMergeOptions = this.chartGaugeOption(this.lightGraphValue);
+    this.lightLineMergeOptions = this.chartLineOption(this.lightGraphValue);
+
+    // Firulinha para temperatura
+    adaptedValue = Math.floor(Math.random() * 3);
+    if (Math.floor(Math.random() * 2) == 0) {
+      adaptedValue *= -1;
+    }
+    this.tempGraphValue = baseValue + adaptedValue;
+    if (this.tempGraphValue < 0) {
+      this.tempGraphValue = 0;
+    }
+    this.tempGaugeMergeOptions = this.chartGaugeOption(this.tempGraphValue);
+    this.tempLineMergeOptions = this.chartLineOption(this.tempGraphValue);
   }
 
   chartGaugeOption(value: number): EChartsOption {
@@ -104,20 +131,22 @@ export class RedeComponent implements OnInit {
   }
 
   chartLineOption(newValue: number): EChartsOption {
-    this.linesData.push(this.linesData[this.linesData.length - 1] + 1);
-    this.linesValue.push(newValue);
+    this.lightLinesData.push(
+      this.lightLinesData[this.lightLinesData.length - 1] + 1
+    );
+    this.lightLinesValue.push(newValue);
     return {
       xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: this.linesData,
+        data: this.lightLinesData,
       },
       yAxis: {
         type: 'value',
       },
       series: [
         {
-          data: this.linesValue,
+          data: this.lightLinesValue,
           type: 'line',
           areaStyle: {},
         },

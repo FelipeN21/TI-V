@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LightGraphComponent } from './light-graph.component';
+import { GraphComponent } from './graph.component';
 
-describe('LightGraphComponent', () => {
-  let component: LightGraphComponent;
-  let fixture: ComponentFixture<LightGraphComponent>;
+describe('GraphComponent', () => {
+  let component: GraphComponent;
+  let fixture: ComponentFixture<GraphComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LightGraphComponent ]
+      declarations: [ GraphComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LightGraphComponent);
+    fixture = TestBed.createComponent(GraphComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
