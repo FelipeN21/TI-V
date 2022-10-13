@@ -19,4 +19,5 @@ export class ArduinoComponent implements OnInit {
   toggleBomb() {
     this.bombOn = !this.bombOn;
   }
+  
 }
