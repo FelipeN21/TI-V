@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import * as echarts from 'echarts';
 import { EChartsOption } from 'echarts';
+import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-rede',
@@ -47,7 +48,7 @@ export class RedeComponent implements OnInit {
   umGaugeOptions!: EChartsOption;
   umLineOptions!: EChartsOption;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(private cd: ChangeDetectorRef, private appService: AppService) {}
 
   ngOnInit(): void {
     this.setupData();
@@ -426,5 +427,34 @@ export class RedeComponent implements OnInit {
         },
       ],
     };
+  }
+
+  exportCSV(type: 'light' | 'temp' | 'um') {
+    switch (type) {
+      case 'light':
+        this.appService.exportToCsv(
+          this.lightLinesData,
+          this.lightLinesValue,
+          'Lumens',
+          'Luminosidade'
+        );
+        break;
+      case 'temp':
+        this.appService.exportToCsv(
+          this.tempLinesData,
+          this.tempLinesValue,
+          'Graus Celsius',
+          'Temperatura'
+        );
+        break;
+      case 'um':
+        this.appService.exportToCsv(
+          this.umLinesData,
+          this.umLinesValue,
+          'Porcentagem',
+          'Umidade'
+        );
+        break;
+    }
   }
 }
