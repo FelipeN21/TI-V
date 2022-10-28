@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Planta } from 'src/app/plantas/planta.model';
+import { Plantas } from 'src/app/plantas/plantas';
 
 @Component({
   selector: 'app-arduino',
@@ -8,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class ArduinoComponent implements OnInit {
   lightOn = true;
   bombOn = false;
+  PLANTAS: Planta[] = Plantas.PLANTAS;
+  plantaSelecionada?: Planta;
 
   constructor() {}
 
@@ -19,5 +23,4 @@ export class ArduinoComponent implements OnInit {
   toggleBomb() {
     this.bombOn = !this.bombOn;
   }
-  
 }

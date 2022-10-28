@@ -6,6 +6,28 @@
     </mat-card>
 
     <div class="content-div">
+        <!--Seção das Recomendações -->
+        <mat-card class="card">
+            <mat-form-field appearance="outline">
+                <mat-label>Planta atual</mat-label>
+                <mat-select [(value)]="plantaSelecionada">
+                    <mat-option *ngFor="let planta of PLANTAS" [value]="planta">
+                        {{planta.nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="recs" [ngStyle]="{'visibility' : plantaSelecionada ? 'visible' : 'hidden'}">
+                <span style="font-size: 18px; font-weight: 500;">Recomendações para {{plantaSelecionada?.nome}}</span>
+                <div class="recs">
+                    <span>Luminosidade: <span style="font-weight: 500;">{{plantaSelecionada?.luminosidade}}
+                            lúmens</span></span>
+                    <span>Umidade: <span style="font-weight: 500;">{{plantaSelecionada?.umidade}}%</span></span>
+                    <span>Temperatura: <span style="font-weight: 500;">{{plantaSelecionada?.temperatura}}
+                            °C</span></span>
+                </div>
+            </div>
+        </mat-card>
+
         <!--Seção da Tabela -->
         <mat-card class="card">
             <!-- Temperatura -->
