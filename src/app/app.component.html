@@ -1,20 +1,20 @@
 <mat-toolbar style="background-color: #c2f8cb;"> SMART GARDEN
     <div style="width: 90%"></div>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <button mat-icon-button class="example-icon favorite-icon">
         <mat-icon>favorite</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <button mat-icon-button class="example-icon">
         <mat-icon>share</mat-icon>
     </button>
 
 </mat-toolbar>
 <mat-tab-group mat-stretch-tabs>
     <mat-tab label="Monitoramento do Arduino">
-        <app-arduino></app-arduino>
+        <app-arduino [lumAtual]="lumAtual" [tempAtual]="tempAtual" [umAtual]="umAtual"></app-arduino>
     </mat-tab>
 
     <mat-tab label="Monitoramento de sistema">
-        <app-rede></app-rede>
+        <app-rede [lightGraphValue]="lumAtual" [tempGraphValue]="tempAtual" [umGraphValue]="umAtual"></app-rede>
     </mat-tab>
 </mat-tab-group>

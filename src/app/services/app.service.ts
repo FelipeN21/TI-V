@@ -1,12 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as FileSaver from 'file-saver';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
+  // CSV RELATED
   exportToCsv(data: number[], value: number[], unidade: string, nome: string) {
     let compactedData = this.compactData(data, 'data');
     let compactedValues = this.compactData(value, 'value');
@@ -92,5 +95,64 @@ export class AppService {
       return array;
     }
     return newArray;
+  }
+
+  // ENDPOINTS
+  baseUlr: string = 'http://127.0.0.1:5000/';
+
+  getTempeture(): Observable<any> {
+    return this.http.get<any>(`${this.baseUlr}temperatura`).pipe(
+      map((r) => {
+        return r.temperatura;
+      })
+    );
+  }
+
+  getUmidity(): Observable<any> {
+    return this.http.get<any>(`${this.baseUlr}umidade`).pipe(
+      map((r) => {
+        return r.umidade;
+      })
+    );
+  }
+
+  getLight(): Observable<any> {
+    return this.http.get<any>(`${this.baseUlr}luminosidade`).pipe(
+      map((r) => {
+        return r.luminosidade;
+      })
+    );
+  }
+
+  getBombState(): Observable<any> {
+    return this.http.get<any>(`${this.baseUlr}bomba`).pipe(
+      map((r) => {
+        return r.bomba;
+      })
+    );
+  }
+
+  getLedState(): Observable<any> {
+    return this.http.get<any>(`${this.baseUlr}led`).pipe(
+      map((r) => {
+        return r.led;
+      })
+    );
+  }
+
+  toggleLed(): Observable<any> {
+    return this.http.get<any>(`${this.baseUlr}alterarLed`).pipe(
+      map((r) => {
+        return r;
+      })
+    );
+  }
+
+  toggleBomb(): Observable<any> {
+    return this.http.get<any>(`${this.baseUlr}alterarBomba`).pipe(
+      map((r) => {
+        return r;
+      })
+    );
   }
 }

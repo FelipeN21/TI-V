@@ -7,6 +7,8 @@ import { ArduinoComponent } from './components/arduino/arduino.component';
 import { RedeComponent } from './components/rede/rede.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { GraphComponent } from './components/rede/graph/graph.component';
+import { AppService } from './services/app.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, ArduinoComponent, RedeComponent, GraphComponent],
@@ -14,11 +16,12 @@ import { GraphComponent } from './components/rede/graph/graph.component';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

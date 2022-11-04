@@ -1,5 +1,11 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import * as echarts from 'echarts';
+import {
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { EChartsOption } from 'echarts';
 import { AppService } from 'src/app/services/app.service';
 
@@ -8,19 +14,14 @@ import { AppService } from 'src/app/services/app.service';
   templateUrl: './rede.component.html',
   styleUrls: ['./rede.component.css'],
 })
-export class RedeComponent implements OnInit {
-  interval = setInterval(() => {
-    this.firulinha(
-      this.lightGraphValue,
-      this.tempGraphValue,
-      this.umGraphValue
-    );
-  }, 500);
+export class RedeComponent implements OnInit, OnChanges {
+  @Input() lightGraphValue: number = 0;
+  @Input() tempGraphValue: number = 0;
+  @Input() umGraphValue: number = 0;
   page: number = 0;
 
   // Variáveis de luminosidade
   histLight: boolean = false;
-  lightGraphValue: number = 55;
   lightGaugeMergeOptions = {};
   lightLineMergeOptions = {};
   lightLinesData: number[] = [0];
@@ -30,7 +31,6 @@ export class RedeComponent implements OnInit {
 
   // Variáveis de temperatura
   histTemp: boolean = false;
-  tempGraphValue: number = 22;
   tempGaugeMergeOptions = {};
   tempLineMergeOptions = {};
   tempLinesData: number[] = [0];
@@ -40,7 +40,6 @@ export class RedeComponent implements OnInit {
 
   // Variáveis de umidade
   histUm: boolean = false;
-  umGraphValue: number = 22;
   umGaugeMergeOptions = {};
   umLineMergeOptions = {};
   umLinesData: number[] = [0];
@@ -51,6 +50,11 @@ export class RedeComponent implements OnInit {
   constructor(private cd: ChangeDetectorRef, private appService: AppService) {}
 
   ngOnInit(): void {
+    this.setupData();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
     this.setupData();
   }
 
@@ -83,52 +87,6 @@ export class RedeComponent implements OnInit {
 
   toggleHistUm() {
     this.histUm = !this.histUm;
-  }
-
-  firulinha(
-    baseValueLight: number,
-    baseValueTemp: number,
-    baseValueUm: number
-  ) {
-    // Firulinha para luminosidade
-    let adaptedValue = Math.floor(Math.random() * 3);
-    if (Math.floor(Math.random() * 2) == 0) {
-      adaptedValue *= -1;
-    }
-    this.lightGraphValue = baseValueLight + adaptedValue;
-    if (this.lightGraphValue < 0) {
-      this.lightGraphValue = 0;
-    }
-    this.lightGaugeMergeOptions = this.chartLightGaugeOption(
-      this.lightGraphValue
-    );
-    this.lightLineMergeOptions = this.chartLightLineOption(
-      this.lightGraphValue
-    );
-
-    // Firulinha para temperatura
-    adaptedValue = Math.floor(Math.random() * 2);
-    if (Math.floor(Math.random() * 2) == 0) {
-      adaptedValue *= -1;
-    }
-    this.tempGraphValue = baseValueTemp + adaptedValue;
-    if (this.tempGraphValue < 0) {
-      this.tempGraphValue = 0;
-    }
-    this.tempGaugeMergeOptions = this.chartTempGaugeOption(this.tempGraphValue);
-    this.tempLineMergeOptions = this.chartTempLineOption(this.tempGraphValue);
-
-    // Firulinha para umidade
-    adaptedValue = Math.floor(Math.random() * 2);
-    if (Math.floor(Math.random() * 2) == 0) {
-      adaptedValue *= -1;
-    }
-    this.umGraphValue = baseValueUm + adaptedValue;
-    if (this.umGraphValue < 0) {
-      this.umGraphValue = 0;
-    }
-    this.umGaugeMergeOptions = this.chartUmGaugeOption(this.umGraphValue);
-    this.umLineMergeOptions = this.chartUmLineOption(this.umGraphValue);
   }
 
   chartLightGaugeOption(value: number): EChartsOption {
